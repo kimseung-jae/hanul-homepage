@@ -21,26 +21,16 @@ create table if not exists public.demo_logs (
   category text check (category in ('food','bakery','craft','cafe'))
 );
 
-create table if not exists public.inbyeol_waitlist (
-  id uuid primary key default gen_random_uuid(),
-  created_at timestamptz not null default now(),
-  email text not null unique check (email ~* '^[^@\s]+@[^@\s]+\.[^@\s]+$' and char_length(email) <= 200),
-  insta_handle text check (char_length(insta_handle) <= 60),
-  agreed boolean not null check (agreed)
-);
 
 alter table public.partner_inquiries enable row level security;
 alter table public.demo_logs enable row level security;
-alter table public.inbyeol_waitlist enable row level security;
 
 drop policy if exists "anon insert" on public.partner_inquiries;
 drop policy if exists "anon insert" on public.demo_logs;
-drop policy if exists "anon insert" on public.inbyeol_waitlist;
 
 create policy "anon insert" on public.partner_inquiries for insert to anon with check (status = '접수');
 create policy "anon insert" on public.demo_logs for insert to anon with check (true);
-create policy "anon insert" on public.inbyeol_waitlist for insert to anon with check (true);
 
 -- 테이블 권한: anon은 insert만
-revoke all on public.partner_inquiries, public.demo_logs, public.inbyeol_waitlist from anon;
-grant insert on public.partner_inquiries, public.demo_logs, public.inbyeol_waitlist to anon;
+revoke all on public.partner_inquiries, public.demo_logs from anon;
+grant insert on public.partner_inquiries, public.demo_logs to anon;

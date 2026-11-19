@@ -1,7 +1,8 @@
 # 한을 홈페이지
 
-주식회사 한을 · 소상공인 딸깍이 공식 홈페이지 (단일 HTML).
+주식회사 한을 · 소상공인 딸깍이 공식 홈페이지 (GitHub Pages).
 
-- 메뉴: 홈, 딸깍이, 성과·언론, 회사소개, 인별소개팅, 문의
-- Google Stitch 기획서(한을 홈페이지 기획서) 화면을 바탕으로 제작
-- 배포: GitHub Pages
+- 페이지: index.html(홈, 딸깍이 바로 실행), ddalkkak.html, press.html, about.html, contact.html
+- 디자인: Google Stitch "한을 홈페이지 기획서" 화면 기반, PC 반응형
+- src-*.html: Stitch 원본 화면 코드
+- supabase-schema.sql / hanul-supabase.js: 문의·체험 로그 저장용 Supabase 연결
