@@ -225,5 +225,43 @@
 <script>
 (function(){var f=document.getElementById('app-frame'),l=document.getElementById('app-loading');function done(){l.style.opacity='0';setTimeout(function(){l.style.display='none'},500)}f.addEventListener('load',done);setTimeout(done,30000);})();
 </script>
+<script>
+/* 전시회 키오스크용 자동 스크롤: ?autoscroll=1 로 접속하면 작동 (속도는 ?speed=0.6 등으로 조절) */
+(function(){
+  var params = new URLSearchParams(location.search);
+  if (!params.has('autoscroll')) return;
+
+  var speed = Number(params.get('speed')) || 0.6;
+  var paused = false, resumeTimer = null, waitingAtTurn = false, direction = 1;
+
+  function pauseForAWhile(){
+    paused = true;
+    if (resumeTimer) clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(function(){ paused = false; }, 10000);
+  }
+  ['touchstart','wheel','mousedown','keydown'].forEach(function(evt){
+    window.addEventListener(evt, pauseForAWhile, { passive: true });
+  });
+
+  function step(){
+    if (!paused && !waitingAtTurn) {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var atBottom = direction > 0 && window.scrollY >= max - 2;
+      var atTop = direction < 0 && window.scrollY <= 2;
+      if (atBottom || atTop) {
+        waitingAtTurn = true;
+        setTimeout(function(){
+          direction *= -1;
+          waitingAtTurn = false;
+        }, 4000);
+      } else {
+        window.scrollBy(0, speed * direction);
+      }
+    }
+    requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+})();
+</script>
 </body>
 </html>
