@@ -276,7 +276,7 @@
   var params = new URLSearchParams(location.search);
   if (params.has('noscroll')) return;
 
-  var speed = Number(params.get('speed')) || 0.35;
+  var speed = Number(params.get('speed')) || 0.55;
   var paused = false, resumeTimer = null, waitingAtTurn = false, direction = 1;
 
   function pauseForAWhile(){
