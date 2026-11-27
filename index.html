@@ -27,7 +27,7 @@
 <!-- HEADER -->
 <header class="fixed top-0 inset-x-0 z-50 bg-[#fbf9f5]/85 backdrop-blur-xl border-b border-black/5">
   <div class="wrap h-16 flex items-center gap-6">
-    <a href="#top" class="flex items-center gap-2.5 shrink-0">
+    <a href="javascript:void(0)" class="to-top flex items-center gap-2.5 shrink-0">
       <span class="w-9 h-9 rounded-xl bg-[#0f2a44] text-white grid place-items-center font-black text-[17px]">한</span>
       <span class="leading-tight"><b class="block text-[16px] font-extrabold text-[#0f2a44]">소상공인 딸깍이</b></span>
     </a>
@@ -38,7 +38,7 @@
       <a href="#faq" class="px-3 py-2 rounded-full hover:bg-black/5">FAQ</a>
       <a href="#contact" class="px-3 py-2 rounded-full hover:bg-black/5">문의</a>
     </nav>
-    <a href="#top" class="ml-auto lg:ml-2 inline-flex items-center gap-1.5 h-10 px-4 rounded-full bg-[#0f2a44] text-white text-[14px] font-bold whitespace-nowrap hover:bg-[#1b3a52] transition"><span class="material-symbols-outlined fill text-[18px]">bolt</span>딸깍이 실행</a>
+    <a href="javascript:void(0)" class="to-top ml-auto lg:ml-2 inline-flex items-center gap-1.5 h-10 px-4 rounded-full bg-[#0f2a44] text-white text-[14px] font-bold whitespace-nowrap hover:bg-[#1b3a52] transition"><span class="material-symbols-outlined fill text-[18px]">bolt</span>딸깍이 실행</a>
   </div>
 </header>
 
@@ -277,11 +277,12 @@
 
 <!-- MOBILE STICKY CTA -->
 <div class="lg:hidden fixed inset-x-0 bottom-0 z-50 p-3 pb-[calc(12px+env(safe-area-inset-bottom))] bg-gradient-to-t from-[#fbf9f5] via-[#fbf9f5]/95 to-transparent">
-  <a href="#top" class="flex items-center justify-center gap-2 h-14 rounded-full bg-[#0f2a44] text-white font-bold text-[16px] shadow-[0_8px_24px_rgba(1,45,29,0.35)]"><span class="material-symbols-outlined fill">bolt</span>지금 딸깍이 실행하기</a>
+  <a href="javascript:void(0)" class="to-top flex items-center justify-center gap-2 h-14 rounded-full bg-[#0f2a44] text-white font-bold text-[16px] shadow-[0_8px_24px_rgba(1,45,29,0.35)]"><span class="material-symbols-outlined fill">bolt</span>지금 딸깍이 실행하기</a>
 </div>
 
 <script>
 (function(){var f=document.getElementById('app-frame'),l=document.getElementById('app-loading');function done(){l.style.opacity='0';setTimeout(function(){l.style.display='none'},500)}f.addEventListener('load',done);setTimeout(done,30000);})();
+(function(){document.querySelectorAll('.to-top').forEach(function(a){a.addEventListener('click', function(){document.getElementById('top').scrollIntoView({behavior:'smooth'});});});})();
 </script>
 <script>
 /* 이미지 확대 팝업: 원문 링크가 없는 사진(카카오톡 캡처, 라디오 스튜디오, 수상 상장 등)은 클릭하면 크게 보여줌 */
